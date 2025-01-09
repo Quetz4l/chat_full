@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Chat</title>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/x-icon" href="images/logo-icon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="styles/chatStyle.css">
+</head>
+
+<body>
+<div id="chat"></div>
+<form id="form">
+    <input type="text" id="message" placeholder="Type your message..." required>
+    <button id="send" type="submit">Send</button>
+</form>
+
+
+<div id="loading">
+    <img src="images/loading.gif" alt="Loading">
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="scripts/chatScriptClient.js"></script>
+</body>
+
+</html>
