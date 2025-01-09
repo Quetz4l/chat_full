@@ -7,26 +7,27 @@ const socket = io("http://localhost:5173");
 
 socket.on('connect', () => {
     console.log('Connected to server');
-    // task 6 ...
+    changeLoadingDisplay("none");
 
     socket.on('disconnect', () => {
         console.log('Disconnected from server');
-        // task 5 and 6 ...
+        alert("Not connected to server");
+        changeLoadingDisplay("block");
     })
 
     socket.on('all_messages_to_client', (messages) => {
-        console.log(messages);
-        // task 4 ...
+        messages.forEach((message) => {
+            createNewMessageDiv(message);
+        });
     })
 });
 
 socket.on('message_to_client', (newMessage) => {
-    console.log(newMessage);
-    // task 2 ...
+    createNewMessageDiv(newMessage)
 });
 
 
-// Create new message line
+// create new message line
 function createNewMessageDiv(newMessage) {
     const messageDiv = document.createElement('div');
     messageDiv.textContent = newMessage;
@@ -38,11 +39,12 @@ function createNewMessageDiv(newMessage) {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const newMessage = messageInput.value;
-    // task 1 ...
+    socket.emit('message_to_server', newMessage);
+    messageInput.value = '';
 });
 
 // Change loading display
 function changeLoadingDisplay(state) {
-    const loadingImg = document.getElementById('loading');
-    // task 6 ...
+    const loading = document.getElementById('loading');
+    loading.style.display = state
 }

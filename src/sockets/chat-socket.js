@@ -7,7 +7,7 @@ export function initSocket(server) {
 
     io.on("connection", (socket) => {
         console.log("User connected with id " + socket.id);
-        // task 4 ...
+        socket.emit("all_messages_to_client", allMessages);
 
         socket.on("disconnect", () => {
             console.log("User disconnected with id " + socket.id);
@@ -15,12 +15,10 @@ export function initSocket(server) {
 
 
         socket.on("message_to_server", (newMessage) => {
-            // task 3 ...
-
+            newMessage = socket.id + ": " + newMessage;
             allMessages.push(newMessage);
             console.log(newMessage);
-
-            // task 2 ...
+            io.emit("message_to_client", newMessage);
         });
 
     });
