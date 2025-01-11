@@ -7,20 +7,20 @@ export function initSocket(server) {
 
     io.on("connection", (socket) => {
         console.log("User connected with id " + socket.id);
-        socket.emit("all_messages_to_client", allMessages);
+        // task 4 ...
 
         socket.on("disconnect", () => {
             console.log("User disconnected with id " + socket.id);
         });
 
 
-        // socket.on("message_to_server", (nickname, newMessage) => {
         socket.on("message_to_server", (data) => {
-            // newMessage = socket.id + ": " + newMessage;
-            let newMessage = data["nickname"] + ": " + data["msg"];
+            // task 3 ...
+
             allMessages.push(newMessage);
             console.log(newMessage);
-            io.emit("message_to_client", newMessage);
+
+            // task 2 ...
         });
 
     });

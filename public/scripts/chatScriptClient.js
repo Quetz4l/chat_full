@@ -5,32 +5,30 @@ const messageInput = document.getElementById('message');
 let NICK_NAME = ""
 
 // Sockets
-// const socket = io("http://localhost:5173");
-const socket = io("https://04c4-185-68-210-241.ngrok-free.app");
+const socket = io("http://localhost:5173");
 
 socket.on('connect', () => {
     console.log('Connected to server');
-    changeLoadingDisplay("none");
+    // task 6 ...
 
     socket.on('disconnect', () => {
         console.log('Disconnected from server');
-        alert("Not connected to server");
-        changeLoadingDisplay("block");
+        // task 5 and 6 ...
     })
 
     socket.on('all_messages_to_client', (messages) => {
-        messages.forEach((message) => {
-            createNewMessageDiv(message);
-        });
+        console.log(messages);
+        // task 4 ...
     })
 });
 
 socket.on('message_to_client', (newMessage) => {
-    createNewMessageDiv(newMessage);
+    console.log(newMessage);
+    // task 2 ...
 });
 
 
-// create new message line
+// Create new message line
 function createNewMessageDiv(newMessage) {
     const messageDiv = document.createElement('div');
     messageDiv.textContent = newMessage;
@@ -48,7 +46,6 @@ form.addEventListener('submit', (e) => {
     }
 
     const newMessage = messageInput.value;
-    // socket.emit('message_to_server', newMessage);
     socket.emit('message_to_server', {"nickname": NICK_NAME, "msg": newMessage});
     messageInput.value = '';
 });
@@ -56,7 +53,7 @@ form.addEventListener('submit', (e) => {
 // Change loading display
 function changeLoadingDisplay(state) {
     const loading = document.getElementById('loading');
-    loading.style.display = state;
+    // task 6 ...
 }
 
 // Get nickname {
@@ -78,7 +75,7 @@ nicknameButton.addEventListener('click', (e) => {
 const color_picker = document.getElementById("color_picker")
 const chat = document.getElementById("chat")
 color_picker.addEventListener('change', () => {
-    chat.style.color = color_picker.value;
+    //task 3...
 })
 
 
