@@ -1,5 +1,8 @@
 body {
-    background-color: teal;
+    background-image: url("../images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -9,8 +12,8 @@ body {
 }
 
 #chat {
-    flex: 1;
     padding: 10px;
+    width: 90%;
     overflow-y: auto;
     color: white;
     font-size: 30px;
@@ -35,4 +38,31 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
+
+#nicknameContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid darkslategrey;
+    z-index: 1;
+}
+
+#chat_container {
+    display: flex;
+    flex: 1;
+}
+
+.color_picker_container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    color: white;
+}
+

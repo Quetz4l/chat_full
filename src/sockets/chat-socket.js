@@ -14,8 +14,10 @@ export function initSocket(server) {
         });
 
 
-        socket.on("message_to_server", (newMessage) => {
-            newMessage = socket.id + ": " + newMessage;
+        // socket.on("message_to_server", (nickname, newMessage) => {
+        socket.on("message_to_server", (data) => {
+            // newMessage = socket.id + ": " + newMessage;
+            let newMessage = data["nickname"] + ": " + data["msg"];
             allMessages.push(newMessage);
             console.log(newMessage);
             io.emit("message_to_client", newMessage);

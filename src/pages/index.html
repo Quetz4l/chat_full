@@ -9,10 +9,20 @@
     <link rel="stylesheet" href="styles/chatStyle.css">
 </head>
 
-<body>
-<div id="chat"></div>
+<body id="body">
+
+<div id="chat_container">
+    <div id="chat"></div>
+
+    <div class="color_picker_container">
+        <label for="color_picker">Select color: </label>
+        <input type="color" id="color_picker" name="favcolor" value="#ff0000">
+    </div>
+</div>
+
+
 <form id="form">
-    <input type="text" id="message" placeholder="Type your message..." required>
+    <input type="text" id="message" placeholder="Type your message..." required autocomplete="off">
     <button id="send" type="submit">Send</button>
 </form>
 
@@ -20,6 +30,15 @@
 <div id="loading">
     <img src="images/loading.gif" alt="Loading">
 </div>
+
+<div id="nicknameContainer">
+    <label>
+        <span>Enter your Nickname: </span>
+        <input id="nicknameInput" type="text" about="nickname" required autocomplete="off">
+        <button id="nicknameButton">Enter</button>
+    </label>
+</div>
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="scripts/chatScriptClient.js"></script>
